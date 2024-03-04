@@ -25,7 +25,7 @@ public class PetTest {
     @Test
     public void completeData() {
         LOG.info("Start completeData");
-        Pet pet = new Pet("sachy", SpeciesEnum.DOG, BreedEnum.ROTTWEILER, (byte)9, GenderEnum.FEMALE,90.32, ColorEnum.WHITE);
+        Pet pet = new Pet("sachy", SpeciesEnum.DOG, BreedEnum.ROTTWEILER, (byte)9, GenderEnum.FEMALE,90.32, ColorEnum.WHITE,1L);
         System.out.println(pet.toString());
         assertEquals("sachy", pet.getName());
         assertEquals(SpeciesEnum.DOG, pet.getSpecies());
@@ -43,7 +43,7 @@ public class PetTest {
     @Test
     public void nullData() {
         LOG.info("Start nullData");
-        assertThrows(Throwable.class, () -> new Pet(null, null, null, (byte) 0, null, 0, null));
+        assertThrows(Throwable.class, () -> new Pet(null, null, null, (byte) 0, null, 0, null,0L));
         LOG.info("Ending nullData");
     }
     
@@ -61,7 +61,7 @@ public class PetTest {
     private static class NegativeAgeTester implements Executable{
         @Override
         public void execute() throws Throwable {
-            new Pet("sachy", SpeciesEnum.DOG, BreedEnum.ROTTWEILER, (byte)-9, GenderEnum.FEMALE,90.32, ColorEnum.WHITE);
+            new Pet("sachy", SpeciesEnum.DOG, BreedEnum.ROTTWEILER, (byte)-9, GenderEnum.FEMALE,90.32, ColorEnum.WHITE, 1L);
 
     }
 }
