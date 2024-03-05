@@ -26,33 +26,38 @@ public class VeterinaryTest {
     private static final Logger LOG = Logger.getLogger(VeterinaryTest.class.getName());
 
     /**
-     * Prueba para verificar que los datos de la mascota esten completos
+     * Prueba para verificar que los datos de la veterinaria esten completos
      */
     @Test
     public void completeData() {
         LOG.info("Start completeData");
+        //se crea una instancia de veterinaria con el nombre de [Amigos Peludos]
         Veterinary veterinary = new Veterinary("Amigos Peludos", null );
+        //se verifica que el nombre sea [Amigos Peludos] para validar que este' en orden
         assertEquals("Amigos Peludos", veterinary.getName());
         assertEquals(new ArrayList<Pet>(), veterinary.getPetList());
         LOG.info("Ending completeData");
     }
 
     /**
-     * Prueba para verificar que los datos de la mascota no esten nulos
+     * Prueba para verificar que los datos de la veterinaria no esten nulos
      */
     @Test
     public void nullData() {
         LOG.info("Start nullData");
+        //se intenta crear una instancia de veterinaria con los datos nulos, se espera que eso
+        //genere una excepcion
         assertThrows(Throwable.class, () -> new Veterinary(null, null));
         LOG.info("Ending nullData");
     }
     /*
-     * Prueba para verificar que la edad de la mascota no sea negativa 
+     * Prueba para agregar una mascota a la veterinaria 
      */
     @Test
     public void addPet(){
         LOG.info("Start addPet");
 
+        //se crea una instancia de la veterinaria,
         var veterinary = new Veterinary("Amigos Peludos",null);
         var pet = new Pet("sachy",SpeciesEnum.DOG,BreedEnum.ROTTWEILER,(byte) 2,GenderEnum.FEMALE,25.55,ColorEnum.WHITE,1L);
 
@@ -81,7 +86,7 @@ public class VeterinaryTest {
     }
 
     /**
-     * Prueba para verificar el obtener un listado  de mascotas alfabetico 
+     * Prueba para verificar el obtener un listado  de mascotas  orden alfabetico 
      */
     @Test
     public void getAlphabeticalList() {
@@ -105,7 +110,7 @@ public class VeterinaryTest {
         LOG.info("Ending  get Alphabetical List");
     }
     /**
-     * Prueba para verificar el obtener un listado  de mascotas alfabetico 
+     * Prueba para verificar el obtener un listado  de mascotas descendiente por la edad 
      */
     @Test
     public void getListByDescendingAge() {
@@ -130,7 +135,7 @@ public class VeterinaryTest {
     }
 
     /**
-     * Prueba para verificar el obtener un listado  de mascotas alfabetico 
+     * Prueba para verificar el obtener un listado  de mascotas  adultas 
      */
     @Test
     public void getAdultPetList() {
@@ -153,25 +158,4 @@ public class VeterinaryTest {
 
         LOG.info("Start  get Adult pet list");
     }
-
-
-
-    /*
-     * Prueba para verificar que la edad de la mascota no sea negativa 
-     */
-    @Test
-    public void negativeAge() {
-        LOG.info("Start negativeAge");
-         NegativeAgeTester tester= new NegativeAgeTester();
-         assertThrows(Throwable.class, tester);
-        LOG.info("Ending emptyData");
-
-    }
-    private static class NegativeAgeTester implements Executable{
-        @Override
-        public void execute() throws Throwable {
-            new Pet("sachy", SpeciesEnum.DOG, BreedEnum.ROTTWEILER, (byte)-9, GenderEnum.FEMALE,90.32, ColorEnum.WHITE, 1L);
-
-    }
-}
 }

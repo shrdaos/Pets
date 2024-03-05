@@ -33,7 +33,7 @@ public class Veterinary {
     }
     /**
      * Método para agregar a una mascota a la veterinaria, validando que el 
-     * numero de identificacion exista 
+     * numero de identificacion no exista 
      * 
      * @param estudiante Estudiante que se desea agregar
      */
@@ -84,8 +84,8 @@ public class Veterinary {
     }
 
        /**
-     * Método privado para determinar si ya existe un estudiante registro en el
-     * mismo número de identificación
+     * Método privado para determinar si ya existe una mascota registrada con el
+     * mismo id
      * 
      * @param numeroIdentificacion Número de identificación a buscar
      * @return Valor boolean que indica si el número de identificación ya está o no
